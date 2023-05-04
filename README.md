@@ -36,7 +36,7 @@ sudo docker compose exec web python manage.py makemigrations
 запустили миграции
 ```
 sudo docker compose exec web python manage.py migrate
-``
+```
 создаем суперюзера
 ```
 sudo docker compose exec web python manage.py createsuperuser
