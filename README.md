@@ -29,17 +29,40 @@ DB_PORT=5432 # порт для подключения к БД
 ```
 sudo docker compose up -d --build
 ```
+создаем миграции
 ```
-sudo docker compose exec web python manage.py makemigrations # создали миграции
-sudo docker compose exec web python manage.py migrate # прогнали миграции
-sudo docker compose exec web python manage.py createsuperuser # создали суперюзера
-sudo docker compose exec web python manage.py collectstatic --no-input # собрали статику
-sudo docker compose exec web python manage.py loaddata fixtures.json # заполнили БД тестовыми данными
+sudo docker compose exec web python manage.py makemigrations
 ```
-Проверяем работоспособность приложения:
+запустили миграции
+```
+sudo docker compose exec web python manage.py migrate
+``
+создаем суперюзера
+```
+sudo docker compose exec web python manage.py createsuperuser
+```
+собираем статику
+```
+sudo docker compose exec web python manage.py collectstatic --no-input
+```
+проверяем работоспособность приложения:
 ```
  http://localhost/admin/
 ```
+Теперь наполните БД тестовыми данными.
+Можете сделать резервную копию БД командой:
+```
+sudo docker compose exec web python manage.py loaddata fixtures.json # заполнили БД тестовыми данными
+```
+Скопируйте резервную копию в контейнер командой:
+```
+sudo docker cp fixtures.json <CONTAINER ID>:app/
+```
+Подгрузите данные БД из директории infra\docker-compose.yaml:
+```
+sudo docker compose exec web python manage.py loaddata fixtures.json
+```
+
 ## Документация к API:
 Здесь описаны все доступные ендпоинты и примеры запросов к ним:
 http://localhost/redoc/
