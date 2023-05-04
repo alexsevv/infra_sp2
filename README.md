@@ -59,7 +59,7 @@ sudo docker compose exec web python manage.py dumpdata > fixtures.json
 ```
 sudo docker cp fixtures.json <CONTAINER ID>:app/
 ```
-Узнать <CONTAINER ID> можно командой:
+Узнать ``<CONTAINER ID>`` можно командой:
 ```
 sudo docker container ls
 ```
