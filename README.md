@@ -53,11 +53,15 @@ sudo docker compose exec web python manage.py collectstatic --no-input
 
 Можете сделать резервную копию БД командой:
 ```
-sudo docker compose exec web python manage.py loaddata fixtures.json
+sudo docker compose exec web python manage.py dumpdata > fixtures.json
 ```
 Скопируйте резервную копию БД в контейнер командой:
 ```
 sudo docker cp fixtures.json <CONTAINER ID>:app/
+```
+Узнать <CONTAINER ID> можно командой:
+```
+sudo docker container ls
 ```
 Подгрузите данные БД из директории infra\docker-compose.yaml:
 ```
