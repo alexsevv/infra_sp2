@@ -2,7 +2,7 @@
 from django.core.mail import send_mail
 from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework import filters, mixins, permissions, status, viewsets
+from rest_framework import filters, mixins, permissions, status
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -27,7 +27,7 @@ from api.permissions import (IsAdminOnlyPermission,
                              CheckAccessReview,
                              IsAdminOrReadOnly)
 from reviews.models import (Title, Review, Categories,
-                            Genre, Title)
+                            Genre)
 from .mixins import CreateListDestroyViewSet
 from users.models import User
 from .filters import GenreFilter
