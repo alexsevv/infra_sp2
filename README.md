@@ -29,32 +29,33 @@ DB_PORT=5432 # порт для подключения к БД
 ```
 sudo docker compose up -d --build
 ```
-создаем миграции
+Создаем миграции
 ```
 sudo docker compose exec web python manage.py makemigrations
 ```
-запустили миграции
+Запустили миграции
 ```
 sudo docker compose exec web python manage.py migrate
 ```
-создаем суперюзера
+Создаем суперюзера
 ```
 sudo docker compose exec web python manage.py createsuperuser
 ```
-собираем статику
+Собираем статику
 ```
 sudo docker compose exec web python manage.py collectstatic --no-input
 ```
-проверяем работоспособность приложения:
+Проверяем работоспособность приложения:
 ```
  http://localhost/admin/
 ```
 Теперь наполните БД тестовыми данными.
+
 Можете сделать резервную копию БД командой:
 ```
-sudo docker compose exec web python manage.py loaddata fixtures.json # заполнили БД тестовыми данными
+sudo docker compose exec web python manage.py loaddata fixtures.json
 ```
-Скопируйте резервную копию в контейнер командой:
+Скопируйте резервную копию БД в контейнер командой:
 ```
 sudo docker cp fixtures.json <CONTAINER ID>:app/
 ```
